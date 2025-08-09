@@ -1,0 +1,19 @@
+{
+  "hero": {
+    "title": "Hi, I'm Khakim",
+    "subtitle": "Full-Stack Developer passionate about creating beautiful and functional web experiences",
+    "viewWork": "View My Work",
+    "getInTouch": "Get In Touch"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "hero": {
+    "title": "Salom, men Xakimman",
+    "subtitle": "Chiroyli va funksional veb-tajribalarni yaratishga ishtiyoqli Full-Stack dasturchi",
+    "viewWork": "Ishlarimni Ko'rish",
+    "getInTouch": "Bog'lanish"
+  },
+  "navigation": {
+    "home": "Bosh sahifa",
+    "about": "Men haqimda",
+    "projects": "Loyihalar",
+    "skills": "Ko'nikmalar",
+    "contact": "Aloqa"
+  },
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "error": "Xatolik yuz berdi"
+  }
+}
