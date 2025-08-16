@@ -4,7 +4,7 @@ import Button from './Button'
 const Hero = () => {
 
   return (
-    <section id="hero" className="section-padding pt-30 md:pt-20 min-h-screen flex flex-col-reverse md:flex-row items-center w-full px-5 md:px-30">
+    <section id="hero" className="section-padding pt-30 md:pt-20 min-h-screen flex flex-col-reverse md:flex-row items-center w-full mx-auto px-5 md:px-30">
       <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
         <p className='mb-4 text-xl font-[400] text-[#64ffda]'>Hi, my name is</p>
         <h1 className='text-7xl font-[700] text-white'>Usmon Khakim</h1>

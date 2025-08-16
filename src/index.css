@@ -370,6 +370,41 @@
     box-shadow: 0 4px 12px rgba(100, 255, 218, 0.1);
   }
 
+  /* Job Tabs */
+  .job-tab {
+    transition: all 0.3s ease;
+    border-left-width: 2px;
+  }
+
+  .job-tab:hover {
+    transform: translateX(4px);
+  }
+
+  .job-tab.active {
+    border-left-color: var(--accent-primary);
+    background-color: var(--green-tint);
+    color: var(--accent-primary);
+  }
+
+  /* Project Cards */
+  .project-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .project-card .tech-tag {
+    transition: all 0.2s ease;
+  }
+
+  .project-card:hover .tech-tag {
+    background-color: var(--accent-primary);
+    color: var(--navy);
+  }
+
 /* Numbered Navigation Styles */
 .nav-numbered {
   counter-reset: nav-counter;
@@ -442,4 +477,17 @@
   line-height: var(--fz-lg);;
   letter-spacing: 0.1em;
   writing-mode: vertical-rl;
+}
+
+/* Experience */
+.experience-item {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    &::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+    }
 }
