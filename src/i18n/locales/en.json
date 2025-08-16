@@ -8,8 +8,8 @@
   "navigation": {
     "home": "Home",
     "about": "About",
-    "projects": "Projects",
-    "skills": "Skills",
+    "experience": "Experience",
+    "work": "Work",
     "contact": "Contact"
   },
   "common": {

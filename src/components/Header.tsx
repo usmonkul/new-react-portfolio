@@ -10,40 +10,43 @@ const Header = () => {
   const { t } = useTranslation();
 
   const navItems = [
-    { name: t('navigation.home'), href: '#home' },
     { name: t('navigation.about'), href: '#about' },
-    { name: t('navigation.projects'), href: '#projects' },
-    { name: t('navigation.skills'), href: '#skills' },
+    { name: t('navigation.experience'), href: '#experience' },
+    { name: t('navigation.work'), href: '#work' },
     { name: t('navigation.contact'), href: '#contact' },
   ];
 
   return (
     <header 
-      className="fixed top-0 left-0 right-0 backdrop-blur-md border-b z-50"
+      className="fixed top-0 left-0 right-0 px-5 md:px-10 z-50 py-10 w-full"
       style={{ 
         backgroundColor: 'var(--bg-overlay)', 
-        borderBottomColor: 'var(--border-primary)' 
+        borderBottomColor: 'var(--border-primary)',
+        height: 'var(--nav-height)'
       }}
     >
-      <div className="container-custom">
-        <div className="flex items-center justify-between h-16">
+      <div className="">
+        <div className="flex items-center justify-between">
           {/* Logo */}
           <Logo />
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="font-medium transition-all duration-200 hover:opacity-80"
-                style={{ color: 'var(--text-secondary)' }}
-                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'}
-                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
-              >
-                {item.name}
-              </a>
-            ))}
+          <nav className="hidden md:flex items-center space-x-4">
+            <ul className="nav-numbered flex items-center space-x-4">
+              {navItems.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className="font-medium transition-all duration-200 hover:opacity-80"
+                    style={{ color: 'var(--text-secondary)' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
@@ -103,19 +106,22 @@ const Header = () => {
             style={{ borderTopColor: 'var(--border-primary)' }}
           >
             <nav className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="font-medium transition-all duration-200"
-                  style={{ color: 'var(--text-secondary)' }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
+              <ul className="nav-numbered flex flex-col space-y-4">
+                {navItems.map((item) => (
+                  <li key={item.name}>
+                    <a
+                      href={item.href}
+                      className="font-medium transition-all duration-200"
+                      style={{ color: 'var(--text-secondary)' }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </nav>
           </div>
         )}
