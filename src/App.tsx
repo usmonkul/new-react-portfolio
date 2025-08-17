@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import AboutMe from './components/AboutMe'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
+import CTA from './components/CTA'
 import Footer from './components/Footer'
 import { ThemeProvider } from './contexts/ThemeContext'
 import './i18n'
@@ -18,6 +19,7 @@ function App() {
           <AboutMe />
           <Experience />
           <Projects />
+          <CTA />
         </main>
         <Footer />
         <AsideLeft />
