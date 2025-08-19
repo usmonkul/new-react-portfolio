@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import data from '../data/data';
 
 const Experience = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeJob, setActiveJob] = useState(0);
+  const { i18n, t } = useTranslation();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,6 +26,7 @@ const Experience = () => {
   }, []);
 
   const currentJob = data.experience[activeJob];
+  const currentLanguage = i18n.language as 'en' | 'uz';
 
   return (
     <section id="experience" className="section-padding py-20 px-5 md:px-30 min-h-screen">
@@ -31,7 +34,7 @@ const Experience = () => {
         {/* Section Header */}
         <div className={`mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="numbered-heading" style={{ color: 'var(--text-primary)' }}>
-            Where I've Worked
+            {t('experience.title')}
           </h2>
         </div>
 
@@ -66,18 +69,18 @@ const Experience = () => {
               <div className="job-details">
                 {/* Job Title and Company */}
                 <h3 className="text-2xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
-                  {currentJob.title} <span style={{ color: 'var(--accent-primary)' }}>@ {currentJob.company}</span>
+                  {currentJob.title[currentLanguage]} <span style={{ color: 'var(--accent-primary)' }}>@ {currentJob.company}</span>
                 </h3>
 
                 {/* Work Date */}
                 <p className="text-sm font-mono mb-6" style={{ color: 'var(--light-slate)' }}>
-                  {currentJob.date}
+                  {currentJob.date[currentLanguage]}
                 </p>
 
                 {/* Job Description */}
                 <div className="mb-8">
                   <ul className="space-y-3">
-                    {currentJob.description.map((desc, index) => (
+                    {currentJob.description[currentLanguage].map((desc, index) => (
                       <li key={index} className="experience-item flex items-start space-x-3">
                         <span 
                           className="text-base leading-relaxed"
@@ -93,7 +96,7 @@ const Experience = () => {
                 {/* Tech Stack */}
                 <div>
                   <h4 className="text-lg font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
-                    Technologies Used:
+                    {t('experience.techTitle')}
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {currentJob.stack.map((tech) => (

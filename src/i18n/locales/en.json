@@ -1,9 +1,11 @@
 {
   "hero": {
-    "title": "Hi, I'm Khakim",
-    "subtitle": "Full-Stack Developer passionate about creating beautiful and functional web experiences",
-    "viewWork": "View My Work",
-    "getInTouch": "Get In Touch"
+    "greeting": "Hi, my name is",
+    "title": "Usmon Khakim",
+    "titleSecondary": "I build things for the web.",
+    "subtitle": "I'm a Front-end engineer specializing in building interactive and responsive websites for the web. Currently, I am focused on building accessible single page applications using React and other new technologies.",
+    "viewWork": "View my work",
+    "getInTouch": "Reach at me!"
   },
   "navigation": {
     "home": "Home",
@@ -15,5 +17,32 @@
   "common": {
     "loading": "Loading...",
     "error": "An error occurred"
+  },
+  "about": {
+    "title": "About Me",
+    "heading": "Where I've Worked",
+    "desc1": "Hello! My name's Khakimov Usmonkul, and I am a passionate full-stack developer with a keen eye for creating engaging user experiences. I hold a Bachelor's degree in Computer Science from Woosong University in South Korea, where I graduated with an impressive GPA of 4.36 out of 4.50.",
+    "desc2": "I specialize in front-end technologies, including React, JavaScript, Next.js, and Tailwind CSS, which I skillfully use to develop modern and responsive web applications. My expertise extends to Python, Flask, MySQL, TypeScript, and Express.js, enabling me to deliver dynamic and innovative functionalities.",
+    "desc3": "Throughout my career, I have successfully collaborated with diverse teams, showcasing strong communication and teamwork skills. My adaptability and commitment to continuous learning drive me to stay ahead of industry trends and rapidly adopt new technologies.",
+    "techTitle": "Technologies I've been working with:",
+    "currentStatus": "What I'm Currently Up To",
+    "currentStatusDesc": "I'm currently working as a Programming Instructor at Ilmla IT Talim, where I teach programming foundations to students aged 10-25, covering core concepts of problem-solving, algorithms, and coding logic. I also deliver comprehensive Front-End Development curriculum including HTML, CSS, JavaScript, React, TypeScript, and guide students in building real-world projects for local clients."
+  },
+  "experience": {
+    "title": "Where I've Worked",
+    "techTitle": "Technologies Used:"
+  },
+  "work": {
+    "title": "Some Things I've Built",
+    "viewAll": "Show More"
+  },
+  "cta": {
+    "title": "What's Next?",
+    "titleSecondary": "Get In Touch",
+    "subtitle": "If you need someone who is punctual, outgoing and eager to learn. I'm currently looking for new opportunities, my inbox is always open. I'll try my best to get back to you!",
+    "button": "Say Hello"
+  },
+  "footer": {
+    "copyright": "Usmon Khakim. All rights reserved."
   }
 }

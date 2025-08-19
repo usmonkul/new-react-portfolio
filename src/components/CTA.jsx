@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import Button from './Button';
-
+import { useTranslation } from 'react-i18next';
 const CTA = () => {
   const [isVisible, setIsVisible] = useState(false);
-
+  const { t } = useTranslation();
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -23,26 +23,26 @@ const CTA = () => {
   }, []);
 
   return (
-    <section id="cta" className="section-padding py-20 px-5 md:px-30 min-h-screen flex items-center justify-center">
+    <section id="cta" className="section-padding py-20 px-5 md:px-30 min-h-[50vh] md:min-h-screen flex items-center justify-center">
       <div className="max-w-4xl mx-auto text-center">
         {/* Section Header */}
         <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="numbered-heading numbered-heading-cta text-center w-fit" style={{ color: 'var(--accent-primary)' }}>
-            What's Next?
+            {t('cta.title')}
           </h2>
         </div>
 
         {/* Main Heading */}
         <div className={`mb-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h3 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
-            Get In Touch
+            {t('cta.titleSecondary')}
           </h3>
         </div>
 
         {/* Descriptive Paragraph */}
         <div className={`mb-12 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-            If you need someone who is punctual, outgoing and eager to learn. I'm currently looking for new opportunities, my inbox is always open. I'll try my best to get back to you!
+            {t('cta.subtitle')}
           </p>
         </div>
 
@@ -54,7 +54,7 @@ const CTA = () => {
             href="mailto:usmonhakimov1999@gmail.com"
             className="text-lg px-12 py-4"
           >
-            Say Hello
+            {t('cta.button')}
           </Button>
         </div>
       </div>

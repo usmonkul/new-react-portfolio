@@ -5,10 +5,19 @@ interface SocialMedia {
 
 interface ExperienceItem {
     id: string;
-    title: string;
+    title: {
+        en: string;
+        uz: string;
+    };
     company: string;
-    date: string;
-    description: string[];
+    date: {
+        en: string;
+        uz: string;
+    };
+    description: {
+        en: string[];
+        uz: string[];
+    };
     stack: string[];
     location?: string;
     type?: 'full-time' | 'part-time' | 'internship' | 'freelance' | 'contract';
@@ -49,7 +58,7 @@ const data: Data = {
         },
         {
             name: "Instagram",
-            url: "https://www.facebook.com/profile.php?id=61559885794014",
+            url: "https://www.instagram.com/usmon_khakim/",
         }, 
         {
             name: "Telegram",
@@ -63,24 +72,36 @@ const data: Data = {
     experience: [
         {
             id: "ilmla",
-            title: "Software Engineer",
+            title: {
+                en: "Programming Instructor",
+                uz: "Dasturlash o'qituvchisi"
+            },
             company: "Ilmla IT Talim",
-            date: "September 2024 - Present",
+            date: {
+                en: "September 2024 - Present",
+                uz: "Sentabr 2024 - Hozir"
+            },
             type: "full-time",
             location: " Samarkand, Uzbekistan",
-            description: [
-                 "Teach Programming Foundations to students aged 10–25, covering core concepts of problem-solving, algorithms, and coding logic.",
-                 "Deliver a comprehensive Front-End Development curriculum, including HTML, CSS, JavaScript, React, TypeScript, and related technologies.",
-                 "Guide and mentor students in building real-world projects for local clients, from planning to deployment, fostering both technical skills and teamwork."
-            ],
+            description: {
+                en: [
+                    "Teach Programming Foundations to students aged 10–25, covering core concepts of problem-solving, algorithms, and coding logic.",
+                    "Deliver a comprehensive Front-End Development curriculum, including HTML, CSS, JavaScript, React, TypeScript, and related technologies.",
+                    "Guide and mentor students in building real-world projects for local clients, from planning to deployment, fostering both technical skills and teamwork."
+                ],
+                uz: [
+                    "10-25 yoshdagi o'quvchilarga Dasturlash asoslarini o'rgatish, muammolarni hal qilish, algoritmlar va kodlash mantiqining asosiy tushunchalarini qamrab oladi.",
+                    "HTML, CSS, JavaScript, React, TypeScript va tegishli texnologiyalarni o'z ichiga olgan keng qamrovli Front-End Development o'quv dasturini o'rgatish.",
+                    "O'quvchilarni mahalliy mijozlar uchun haqiqiy dunyo loyihalarini qurishda yo'riqnoma berish va mentorlash, rejalashtirishdan joylashtirish gacha, texnik ko'nikmalar va jamoa ishini rivojlantirish."
+                ]
+            },
             stack: [
-                "Python",
-                "Flask",
-                "Next.js",
                 "React.js",
                 "TypeScript",
                 "JavaScript",
                 "Tailwind CSS",
+                "Python",
+                "Flask",
                 "SQLite",
                 "Figma",
                 "Notion",
@@ -88,16 +109,29 @@ const data: Data = {
           },
           {
             id: "goqba",
-            title: "Software Engineer",
+            title: {
+                en: "Software Engineer",
+                uz: "Dastur muhandisi"
+            },
             company: "GoQba Technology",
-            date: "September 2023 - August 2024",
+            date: {
+                en: "September 2023 - August 2024",
+                uz: "Sentabr 2023 - Avgust 2024"
+            },
             type: "full-time",
             location: "Seoul, South Korea",
-            description: [
-                "Developed and managed front-end code for over four websites",
-                "Conducting research and designing single-page websites and components",
-                "Contributed to backend development for the administrative platform, incorporating CRUD operations through Flask and MySQL",
-            ],
+            description: {
+                en: [
+                    "Developed and managed front-end code for over four websites",
+                    "Conducting research and designing single-page websites and components",
+                    "Contributed to backend development for the administrative platform, incorporating CRUD operations through Flask and MySQL",
+                ],
+                uz: [
+                    "To'rtdan ortiq veb-saytlar uchun front-end kodlarini ishlab chiqish va boshqarish",
+                    "Bir sahifali veb-saytlar va komponentlarni tadqiq qilish va dizayn qilish",
+                    "Flask va MySQL orqali CRUD operatsiyalarini o'z ichiga olgan ma'muriy platforma uchun backend ishlab chiqishda hissa qo'shish",
+                ]
+            },
             stack: [
                 "Python",
                 "Flask",
@@ -113,16 +147,29 @@ const data: Data = {
         },
         {
             id: "intern",
-            title: "Front-end Developer Internship",
+            title: {
+                en: "Front-end Developer Internship",
+                uz: "Front-end Dasturchi Amaliyot"
+            },
             company: "IDR Envision",
-            date: "March 2023 - May 2023",
+            date: {
+                en: "March 2023 - May 2023",
+                uz: "Mart 2023 - May 2023"
+            },
             type: "internship",
             location: "Seoul, South Korea",
-            description: [
-                "Build a dynamic administration web app",
-                "Gathered functional and non-functional requirements, and created high-level design diagrams",
-                "Draw wireframe and design website UI using Figma",
-            ],
+            description: {
+                en: [
+                    "Build a dynamic administration web app",
+                    "Gathered functional and non-functional requirements, and created high-level design diagrams",
+                    "Draw wireframe and design website UI using Figma",
+                ],
+                uz: [
+                    "Dinamik ma'muriy veb-ilovani qurish",
+                    "Funktsional va funktsional bo'lmagan talablarni to'plash va yuqori darajadagi dizayn diagrammalarini yaratish",
+                    "Figma yordamida veb-sayt UI sini chizish va dizayn qilish",
+                ]
+            },
             stack: [
                 "React.js",
                 "TypeScript",
@@ -133,16 +180,29 @@ const data: Data = {
         },
         {
             id: "freelance",
-            title: "Freelance Web Developer",
+            title: {
+                en: "Freelance Web Developer",
+                uz: "Mustaqil Veb-Dasturchi"
+            },
             company: "Freelance",
-            date: "January 2021 - February 2023",
+            date: {
+                en: "January 2021 - February 2023",
+                uz: "Yanvar 2021 - Fevral 2023"
+            },
             type: "freelance",
             location: "Remote",
-            description: [
-                "Collaborated with a team of developers or individually to build modern and responsive web applications using best practices.",
-                "Build semantically structured web applications.",
-                "Developed, maintained, and shipped production code for client websites.",
-            ],
+            description: {
+                en: [
+                    "Collaborated with a team of developers or individually to build modern and responsive web applications using best practices.",
+                    "Build semantically structured web applications.",
+                    "Developed, maintained, and shipped production code for client websites.",
+                ],
+                uz: [
+                    "Dasturchilar jamoasi bilan hamkorlik qilish yoki individual ravishda eng yaxshi amaliyotlardan foydalanib zamonaviy va responsive veb-ilovalarni qurish.",
+                    "Semantik tarzda tuzilgan veb-ilovalarni qurish.",
+                    "Mijozlar veb-saytlari uchun production kodlarini ishlab chiqish, saqlash va yetkazib berish.",
+                ]
+            },
             stack: [
                 "Next.js",
                 "React.js",

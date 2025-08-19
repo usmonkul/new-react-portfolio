@@ -1,4 +1,6 @@
+import { useTranslation } from 'react-i18next';
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer 
       className="py-10"
@@ -54,7 +56,7 @@ const Footer = () => {
           {/* Copyright */}
           <div >
             <p style={{ color: 'var(--text-muted)' }}>
-              © {new Date().getFullYear()} Khakim. All rights reserved.
+              © {new Date().getFullYear()} {t('footer.copyright')}
             </p>
           </div>
       </div>

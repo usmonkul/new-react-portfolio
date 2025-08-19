@@ -1,7 +1,9 @@
 {
   "hero": {
-    "title": "Salom, men Xakimman",
-    "subtitle": "Chiroyli va funksional veb-tajribalarni yaratishga ishtiyoqli Full-Stack dasturchi",
+    "greeting": "Assalomu Alaykum, Mening ismim",
+    "title": "Usmon Khakim",
+    "titleSecondary": "Men veb uchun loyihalar yarataman.",
+    "subtitle": "Front-end muhandisi sifatida interaktiv va moslashuvchan veb-saytlar ishlab chiqishga ixtisoslashganman. Hozirda esa React va zamonaviy texnologiyalardan foydalanib, qulay va hammaga ochiq (accessible) yagona sahifali ilovalar yaratishga e’tibor qaratmoqdaman.",
     "viewWork": "Ishlarimni Ko'rish",
     "getInTouch": "Bog'lanish"
   },
@@ -15,5 +17,32 @@
   "common": {
     "loading": "Yuklanmoqda...",
     "error": "Xatolik yuz berdi"
+  },
+  "about": {
+    "title": "Men haqimda",
+    "heading": "Qayerda ishlaganman",
+    "desc1": "Assalomu alaykum! Mening ismim Hakimov Usmonqul, va men foydalanuvchilarning qiziqarli tajribalarini yaratishga moyil bo'lgan full-stack dasturchiman. Men Janubiy Koreyadagi Woosong universitetida Computer Science (Kompyuter muhandislik) yo'nalishi bo'yicha bakalavr darajasini olganman va 4.50 dan 4.36 ta'lim balli bilan bitirganman.",
+    "desc2": "Men React, JavaScript, Next.js va Tailwind CSS kabi front-end texnologiyalarida foydalanib kelmoqdaman, ularni zamonaviy va responsive veb-ilovalarni ishlab chiqish uchun mahorat bilan ishlataman. Mening tajribam Python, Flask, MySQL, TypeScript va Express.js kami back-end texnologiyalarini ham o'z ichiga oladi, bu mening loyihalarimda dinamik va innovatsion funksiyalarni taqdim etish imkonini beradi.",
+    "desc3": "Faoliyatim davomida men turli xil jamoalar bilan muvaffaqiyatli hamkorlik qildim, kuchli aloqa va jamoa ishi ko'nikmalarini namoyish qildim. Mening moslashuvchanligim va doimiy o'rganishga sodiqligim meni sanoat tendentsiyalaridan oldinda bo'lishga va yangi texnologiyalarni tez o'zlashtirishga undaydi.",
+    "techTitle": "Men ishlagan texnologiyalar:",
+    "currentStatus": "Hozirda nima qilayotganim",
+    "currentStatusDesc": "Men hozirda Ilmla IT Talimda Dasturlash o'qituvchisi sifatida ishlayapman, 10-25 yoshdagi o'quvchilarga dasturlash asoslarini o'rgataman, muammolarni hal qilish, algoritmlar va kodlash mantiqining asosiy tushunchalarini qamrab oladi. Shuningdek, HTML, CSS, JavaScript, React, TypeScript va boshqa texnologiyalarni o'z ichiga olgan keng qamrovli Front-End Development kursini o'rgataman va o'quvchilarni mahalliy mijozlar uchun haqiqiy dunyo loyihalarini qurishda yordam beraman."
+  },
+  "experience": {
+    "title": "Mening Tajribam",
+    "techTitle": "Ishlatgan texnologiyalarim:"
+  },
+  "work": {
+    "title": "Men Qurgan Narsalar",
+    "viewAll": "Ko'proq ko'rish"
+  },
+  "cta": {
+    "title": "Keyingi qadam nima?",
+    "titleSecondary": "Bog'lanish",
+    "subtitle": "Agar sizga vaqtida keladigan, faol va o‘rganishga chanqoq inson kerak bo‘lsa, men hozirda yangi imkoniyatlarni izlayapman. Mening pochta qutim doimo ochiq, imkon qadar tezroq javob berishga harakat qilaman.",
+    "button": "Salom yo‘llash"
+  },
+  "footer": {
+    "copyright": "Usmon Khakim. Barcha huquqlar himoyalangan."
   }
 }

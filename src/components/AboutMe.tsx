@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const AboutMe = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useTranslation();
 
   const techStack = [
     'React', 'TypeScript', 'JavaScript', 'Node.js', 'Python', 'HTML/CSS',
@@ -33,7 +35,7 @@ const AboutMe = () => {
         {/* Section Header */}
         <div className={`mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="numbered-heading" style={{ color: 'var(--text-primary)' }}>
-            About Me
+            {t('about.title')}
           </h2>
         </div>
 
@@ -42,19 +44,15 @@ const AboutMe = () => {
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div className="space-y-6">
               <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                Hello! I'm Usmon, a passionate frontend engineer based in Uzbekistan. I enjoy creating things that live on the internet, whether that be websites, applications, or anything in between.
+                {t('about.desc1')}
               </p>
               
               <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                My journey in web development started back in 2019 when I decided to try editing custom Tumblr themes — turns out hacking together a custom reblog button taught me a lot about HTML & CSS!
+                {t('about.desc2')}
               </p>
               
               <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                Fast-forward to today, and I've had the privilege of building software for an <span style={{ color: 'var(--accent-primary)' }}>advertising agency</span>, a <span style={{ color: 'var(--accent-primary)' }}>startup</span>, a <span style={{ color: 'var(--accent-primary)' }}>huge corporation</span>, and <span style={{ color: 'var(--accent-primary)' }}>freelance projects</span>.
-              </p>
-              
-              <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                My main focus these days is building accessible, inclusive products and digital experiences for a variety of clients.
+                {t('about.desc3')}
               </p>
             </div>
           </div>
@@ -62,7 +60,7 @@ const AboutMe = () => {
           {/* Tech Stack Skills */}
           <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
             <h3 className="text-2xl font-semibold mb-6" style={{ color: 'var(--text-primary)' }}>
-              Technologies I've been working with:
+              {t('about.techTitle')}
             </h3>
             
             <div className="flex flex-wrap gap-3">
@@ -104,12 +102,10 @@ const AboutMe = () => {
         <div className={`mt-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="bg-gradient-to-r from-green-500/10 to-blue-500/10 p-8 rounded-lg border border-green-500/20">
             <h3 className="text-2xl font-semibold mb-4" style={{ color: 'var(--accent-primary)' }}>
-              What I'm Currently Up To
+              {t('about.currentStatus')}
             </h3>
             <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              I'm currently working on building accessible, inclusive products and digital experiences at{' '}
-              <span style={{ color: 'var(--accent-primary)' }}>Upwork</span>. I'm also actively seeking new opportunities 
-              where I can make a meaningful impact and continue growing as a developer.
+              {t('about.currentStatusDesc')}
             </p>
           </div>
         </div>

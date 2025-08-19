@@ -12,8 +12,8 @@ const Header = () => {
   const navItems = [
     { name: t('navigation.about'), href: '#about' },
     { name: t('navigation.experience'), href: '#experience' },
-    { name: t('navigation.work'), href: '#work' },
-    { name: t('navigation.contact'), href: '#contact' },
+    { name: t('navigation.work'), href: '#projects' },
+    { name: t('navigation.contact'), href: '#cta' },
   ];
 
   return (

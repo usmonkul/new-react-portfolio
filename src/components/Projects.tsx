@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import data from '../data/data';
+import { useTranslation } from 'react-i18next';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState(10);
   const [filteredProjects, setFilteredProjects] = useState(data.projects);
-
+  const { t } = useTranslation();
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -51,7 +52,7 @@ const Projects = () => {
         {/* Section Header */}
         <div className={`mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="numbered-heading" style={{ color: 'var(--text-primary)' }}>
-            Some Things I've Built
+            {t('work.title')}
           </h2>
         </div>
 
@@ -187,7 +188,7 @@ const Projects = () => {
                   e.currentTarget.style.backgroundColor = 'transparent';
                 }}
               >
-                Show More
+                {t('work.viewAll')}
               </button>
             </div>
           )}
