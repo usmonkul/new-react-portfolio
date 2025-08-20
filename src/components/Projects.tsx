@@ -1,14 +1,20 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getData } from '../data/data';
+import { getSafeData } from '../data/data';
 import { useTranslation } from 'react-i18next';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState(10);
-  const data = getData();
-  const [filteredProjects, setFilteredProjects] = useState(data.projects || []);
+  const data = getSafeData();
+  const [filteredProjects, setFilteredProjects] = useState(() => {
+    // Safety check to prevent undefined errors
+    if (!data?.projects || !Array.isArray(data.projects)) {
+      return [];
+    }
+    return data.projects;
+  });
   const { t } = useTranslation();
 
   // Animation variants
@@ -85,13 +91,19 @@ const Projects = () => {
   }, []);
 
   useEffect(() => {
+    // Safety check to prevent undefined errors
+    if (!data?.projects || !Array.isArray(data.projects)) {
+      setFilteredProjects([]);
+      return;
+    }
+    
     if (selectedCategory === 'all') {
-      setFilteredProjects(data.projects || []);
+      setFilteredProjects(data.projects);
     } else {
-      setFilteredProjects((data.projects || []).filter(project => project.category === selectedCategory));
+      setFilteredProjects(data.projects.filter((project: any) => project.category === selectedCategory));
     }
     setVisibleCount(10); // Reset visible count when filtering
-  }, [selectedCategory]);
+  }, [selectedCategory, data.projects]);
 
   // Safety check to prevent errors when data is not loaded
   if (!data.projects || data.projects.length === 0) {
@@ -171,7 +183,7 @@ const Projects = () => {
           animate={isVisible ? "visible" : "hidden"}
         >
           <AnimatePresence>
-            {visibleProjects.map((project, index) => (
+                            {visibleProjects.map((project: any, index: number) => (
               <motion.div
                 key={project.id}
                 className="project-card group relative p-6 rounded-lg flex flex-col h-full"
@@ -250,7 +262,7 @@ const Projects = () => {
                   className="flex flex-wrap gap-1 mt-auto"
                   variants={techTagVariants}
                 >
-                  {project.tech.map((tech, techIndex) => (
+                                      {project.tech.map((tech: string, techIndex: number) => (
                     <motion.span
                       key={tech}
                       className="text-xs font-mono px-2 py-1 rounded"

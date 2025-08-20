@@ -64,7 +64,7 @@ const LanguageSwitcher = () => {
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
       >
-        {languages.map((language) => (
+        {languages?.map((language) => (
           <button
             key={language.code}
             className="w-full px-3 py-2 text-left text-sm transition-all duration-200 first:rounded-t-lg last:rounded-b-lg flex items-center justify-between"

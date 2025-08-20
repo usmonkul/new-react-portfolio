@@ -80,7 +80,7 @@ const SpotlightDemo: React.FC = () => {
           </p>
           
           <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {Array.from({ length: 8 }).map((_, i) => (
+            {Array.from({ length: 8 })?.map((_, i) => (
               <div
                 key={i}
                 className="bg-white bg-opacity-20 rounded-lg p-4 text-center backdrop-blur-sm"

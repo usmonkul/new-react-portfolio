@@ -1,12 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getData } from '../data/data';
+import { getSafeData } from '../data/data';
 
 const Experience = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeJob, setActiveJob] = useState(0);
   const { i18n, t } = useTranslation();
-  const data = getData();
+  const data = getSafeData();
+
+  // Safety check to prevent errors when data is not loaded
+  if (!data?.experience || !Array.isArray(data.experience) || data.experience.length === 0) {
+    return (
+      <section id="experience" className="section-padding py-20 px-5 md:px-30 min-h-screen">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center">
+            <p style={{ color: 'var(--text-secondary)' }}>Loading experience data...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,7 +39,12 @@ const Experience = () => {
     return () => observer.disconnect();
   }, []);
 
-  const currentJob = data.experience[activeJob];
+  // Additional safety check for currentJob
+  if (!data.experience[activeJob]) {
+    setActiveJob(0); // Reset to first job if current one is invalid
+  }
+
+  const currentJob = data.experience[activeJob] || data.experience[0];
   const currentLanguage = i18n.language as 'en' | 'uz';
 
   return (
@@ -45,7 +63,7 @@ const Experience = () => {
             {/* Left Side - Job Tabs */}
             <div className="lg:w-1/3">
               <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible">
-                {data.experience.map((job, index) => (
+                {data.experience?.map((job: any, index: number) => (
                   <button
                     key={job.id}
                     onClick={() => setActiveJob(index)}
@@ -81,7 +99,7 @@ const Experience = () => {
                 {/* Job Description */}
                 <div className="mb-8">
                   <ul className="space-y-3">
-                    {currentJob.description[currentLanguage].map((desc, index) => (
+                    {currentJob?.description?.[currentLanguage]?.map((desc: string, index: number) => (
                       <li key={index} className="experience-item flex items-start space-x-3">
                         <span 
                           className="text-base leading-relaxed"
@@ -100,7 +118,7 @@ const Experience = () => {
                     {t('experience.techTitle')}
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {currentJob.stack.map((tech) => (
+                    {currentJob?.stack?.map((tech: string) => (
                       <span
                         key={tech}
                         className="px-3 py-1 text-xs font-mono rounded-md transition-all duration-300 hover:scale-105"

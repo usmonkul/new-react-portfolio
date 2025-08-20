@@ -171,7 +171,7 @@ const AboutMe = () => {
               animate={isVisible ? "visible" : "hidden"}
               transition={{ delay: 0.6 }}
             >
-              {techStack.map((tech, index) => (
+              {techStack?.map((tech, index) => (
                 <motion.div
                   key={tech}
                   className="skill-item flex items-center space-x-2 p-2 rounded-md"

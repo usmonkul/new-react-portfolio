@@ -301,7 +301,7 @@ const SearchBar = () => {
             <div className="max-h-96 overflow-y-auto">
               {filteredResults.length > 0 ? (
                 <div className="py-2">
-                  {filteredResults.map((result, index) => (
+                  {filteredResults?.map((result, index) => (
                     <button
                       key={result.id}
                       className={`w-full px-4 py-3 text-left flex items-center space-x-3 transition-all duration-150 `}

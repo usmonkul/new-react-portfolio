@@ -297,8 +297,7 @@ const data: Data = {
             showInProjects: true,
             info: "Inspection manager app that Inspector able to create inspection target, inspection items, inspectors to monitor inspections on a target place",
             category: 'frontend',
-          },
-          
+          }
     ]
 };
 
@@ -388,3 +387,26 @@ export const checkDataReady = () => isDataReady;
 
 // Initialize data on module load
 getData();
+
+// Export a more robust data access function
+export const getSafeData = () => {
+  try {
+    const data = getData();
+    
+    // Ensure all required properties exist and are arrays
+    return {
+      email: data.email || 'usmonhakimov1999@gmail.com',
+      socialMedia: Array.isArray(data.socialMedia) ? data.socialMedia : [],
+      experience: Array.isArray(data.experience) ? data.experience : [],
+      projects: Array.isArray(data.projects) ? data.projects : []
+    };
+  } catch (error) {
+    console.error('Error in getSafeData:', error);
+    return {
+      email: 'usmonhakimov1999@gmail.com',
+      socialMedia: [],
+      experience: [],
+      projects: []
+    };
+  }
+};

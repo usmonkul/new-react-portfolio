@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run validate-data && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy:vercel": "vercel --prod",
     "deploy:netlify": "netlify deploy --dir=dist --prod",
     "analyze": "vite build --mode analyze",
-    "favicon:help": "node scripts/generate-favicons.js"
+    "favicon:help": "node scripts/generate-favicons.js",
+    "validate-data": "node scripts/validate-data.js"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",

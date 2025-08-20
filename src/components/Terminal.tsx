@@ -130,7 +130,7 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
           {/* Terminal Content */}
           <div className="p-4 h-full overflow-y-auto font-mono text-sm">
             {/* Output History */}
-            {outputHistory.map((output, index) => (
+            {outputHistory?.map((output, index) => (
               <div key={index} className="mb-2">
                 {output.type === 'command' && (
                   <div className="text-green-400">{output.content}</div>
