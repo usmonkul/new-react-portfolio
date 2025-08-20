@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy:vercel": "vercel --prod",
+    "deploy:netlify": "netlify deploy --dir=dist --prod",
+    "analyze": "vite build --mode analyze",
+    "favicon:help": "node scripts/generate-favicons.js"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
