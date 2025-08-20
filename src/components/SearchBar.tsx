@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useState, useEffect, useRef, useMemo } from 'react';
 
 interface SearchResult {
   id: string;
@@ -11,7 +10,7 @@ interface SearchResult {
 }
 
 const SearchBar = () => {
-  const { t } = useTranslation();
+
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -21,7 +20,7 @@ const SearchBar = () => {
   const allResults: SearchResult[] = [
     {
       id: 'home',
-      title: t('navigation.home'),
+      title: 'Home',
       description: 'Welcome section and introduction',
       type: 'section',
       href: '#home',
@@ -29,7 +28,7 @@ const SearchBar = () => {
     },
     {
       id: 'about',
-      title: t('navigation.about'),
+      title: 'About me',
       description: 'Learn more about my background and experience',
       type: 'section',
       href: '#about',
@@ -37,7 +36,7 @@ const SearchBar = () => {
     },
     {
       id: 'projects',
-      title: t('navigation.projects'),
+      title: 'Projects',
       description: 'View my latest work and projects',
       type: 'section',
       href: '#projects',
@@ -45,15 +44,15 @@ const SearchBar = () => {
     },
     {
       id: 'skills',
-      title: t('navigation.skills'),
+      title: 'Skills',
       description: 'Technical skills and expertise',
       type: 'section',
-      href: '#skills',
+      href: '#about',
       icon: '⚡'
     },
     {
       id: 'contact',
-      title: t('navigation.contact'),
+      title: 'Contact',
       description: 'Get in touch for collaboration',
       type: 'section',
       href: '#contact',
@@ -64,7 +63,7 @@ const SearchBar = () => {
       title: 'Experience',
       description: 'Professional work experience and career',
       type: 'section',
-      href: '#about',
+      href: '#experience',
       icon: '💼'
     },
     {
@@ -102,12 +101,15 @@ const SearchBar = () => {
   ];
 
   // Filter results based on search query
-  const filteredResults = searchQuery.trim() === '' 
-    ? allResults.slice(0, 6) // Show top 6 when no query
-    : allResults.filter(result => 
-        result.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        result.description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+  const filteredResults = useMemo(() => {
+    if (searchQuery.trim() === '') {
+      return allResults.slice(0, 6); // Show top 6 when no query
+    }
+    return allResults.filter(result => 
+      result.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      result.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery]);
 
   // Handle keyboard shortcuts
   useEffect(() => {
@@ -129,13 +131,19 @@ const SearchBar = () => {
       if (isOpen) {
         if (e.key === 'ArrowDown') {
           e.preventDefault();
-          setSelectedIndex(prev => 
-            prev < filteredResults.length - 1 ? prev + 1 : prev
-          );
+          setSelectedIndex(prev => {
+            const newIndex = prev < filteredResults.length - 1 ? prev + 1 : prev;
+            console.log('Arrow Down:', { prev, newIndex, total: filteredResults.length });
+            return newIndex;
+          });
         }
         if (e.key === 'ArrowUp') {
           e.preventDefault();
-          setSelectedIndex(prev => prev > 0 ? prev - 1 : prev);
+          setSelectedIndex(prev => {
+            const newIndex = prev > 0 ? prev - 1 : prev;
+            console.log('Arrow Up:', { prev, newIndex, total: filteredResults.length });
+            return newIndex;
+          });
         }
         if (e.key === 'Enter' && filteredResults[selectedIndex]) {
           e.preventDefault();
@@ -159,6 +167,13 @@ const SearchBar = () => {
   useEffect(() => {
     setSelectedIndex(0);
   }, [searchQuery]);
+
+  // Ensure selectedIndex is valid when filteredResults change
+  useEffect(() => {
+    if (selectedIndex >= filteredResults.length && filteredResults.length > 0) {
+      setSelectedIndex(filteredResults.length - 1);
+    }
+  }, [filteredResults, selectedIndex]);
 
   const handleResultClick = (result: SearchResult) => {
     // Navigate to the href
@@ -289,11 +304,10 @@ const SearchBar = () => {
                   {filteredResults.map((result, index) => (
                     <button
                       key={result.id}
-                      className={`w-full px-4 py-3 text-left flex items-center space-x-3 transition-all duration-150 ${
-                        index === selectedIndex ? 'bg-opacity-50' : ''
-                      }`}
+                      className={`w-full px-4 py-3 text-left flex items-center space-x-3 transition-all duration-150 `}
                       style={{
-                        backgroundColor: index === selectedIndex ? 'var(--bg-tertiary)' : 'transparent'
+                        backgroundColor: index === selectedIndex ? 'var(--bg-tertiary)' : 'transparent',
+                        borderLeft: index === selectedIndex ? '3px solid var(--accent-primary)' : 'none'
                       }}
                       onClick={() => handleResultClick(result)}
                       onMouseEnter={() => setSelectedIndex(index)}

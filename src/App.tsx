@@ -8,22 +8,31 @@ import Footer from './components/Footer'
 import { ThemeProvider } from './contexts/ThemeContext'
 import './i18n'
 import { AsideLeft, AsideRight } from './components/Aside'
+import SpotlightEffect from './components/SpotlightEffect'
+import './components/SpotlightEffect.css'
 
 function App() {
   return (
     <ThemeProvider>
       <div className="App">
-        <Header />
-        <main>
-          <Hero />
-          <AboutMe />
-          <Experience />
-          <Projects />
-          <CTA />
-        </main>
-        <Footer />
-        <AsideLeft />
-        <AsideRight />
+        <SpotlightEffect 
+          size={800} 
+          opacity={0.12} 
+          blur={1}
+          enabled={true}
+        >
+          <Header />
+          <main>
+            <Hero />
+            <AboutMe />
+            <Experience />
+            <Projects />
+            <CTA />
+          </main>
+          <Footer />
+          <AsideLeft />
+          <AsideRight />
+        </SpotlightEffect>
       </div>
     </ThemeProvider>
   )
