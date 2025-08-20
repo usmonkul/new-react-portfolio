@@ -6,13 +6,22 @@ import Terminal from './Terminal';
 const AboutMe = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
-  const { t } = useTranslation();
+  const { t, ready } = useTranslation();
 
-  const techStack = [
+  // Fallback tech stack in case translations aren't ready
+  const fallbackTechStack = [
     'React', 'TypeScript', 'JavaScript', 'Node.js', 'Python', 'HTML/CSS',
     'Tailwind CSS', 'Git', 'MongoDB', 'PostgreSQL', 'Express.js', 'Next.js',
     'Redux', 'GraphQL', 'Docker', 'AWS', 'Firebase', 'Jest', 'Cypress'
   ];
+
+  let techStack = ready ? fallbackTechStack : fallbackTechStack;
+
+  // Safety check to ensure techStack is always an array
+  if (!Array.isArray(techStack) || techStack.length === 0) {
+    console.warn('Tech stack not properly loaded, using fallback');
+    techStack = fallbackTechStack;
+  }
 
   // Animation variants
   const containerVariants = {

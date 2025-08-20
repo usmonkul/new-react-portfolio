@@ -7,14 +7,28 @@ import SearchBar from './SearchBar';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { t } = useTranslation();
+  const { t, ready } = useTranslation();
 
-  const navItems = [
+  // Fallback navigation items in case translations aren't ready
+  const fallbackNavItems = [
+    { name: 'About', href: '#about' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Work', href: '#projects' },
+    { name: 'Contact', href: '#cta' },
+  ];
+
+  let navItems = ready ? [
     { name: t('navigation.about'), href: '#about' },
     { name: t('navigation.experience'), href: '#experience' },
     { name: t('navigation.work'), href: '#projects' },
     { name: t('navigation.contact'), href: '#cta' },
-  ];
+  ] : fallbackNavItems;
+
+  // Safety check to ensure navItems is always an array
+  if (!Array.isArray(navItems) || navItems.length === 0) {
+    console.warn('Navigation items not properly loaded, using fallback');
+    navItems = fallbackNavItems;
+  }
 
   return (
     <header 

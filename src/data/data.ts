@@ -311,12 +311,16 @@ console.log('Data loaded:', {
 
 export default data;
 
+// Data ready state
+let isDataReady = false;
+
 // Safe data access utility
 export const getData = () => {
   try {
     // Validate data structure
     if (!data || typeof data !== 'object') {
       console.error('Data is not properly loaded');
+      isDataReady = false;
       return {
         email: 'usmonhakimov1999@gmail.com',
         socialMedia: [],
@@ -359,6 +363,7 @@ export const getData = () => {
       });
     }
 
+    isDataReady = true;
     console.log('Data validation passed:', { 
       socialMediaCount: data.socialMedia?.length, 
       experienceCount: data.experience?.length, 
@@ -368,6 +373,7 @@ export const getData = () => {
     return data;
   } catch (error) {
     console.error('Error accessing data:', error);
+    isDataReady = false;
     return {
       email: 'usmonhakimov1999@gmail.com',
       socialMedia: [],
@@ -376,3 +382,9 @@ export const getData = () => {
     };
   }
 };
+
+// Check if data is ready
+export const checkDataReady = () => isDataReady;
+
+// Initialize data on module load
+getData();
