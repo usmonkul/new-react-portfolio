@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import data from '../data/data';
+import { getData } from '../data/data';
 
 const Experience = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeJob, setActiveJob] = useState(0);
   const { i18n, t } = useTranslation();
+  const data = getData();
 
   useEffect(() => {
     const observer = new IntersectionObserver(

@@ -254,7 +254,7 @@ const data: Data = {
             ],
             showInProjects: true,
             info: "Full Stack Movie app. The users can buy a subscription, login and register on the app. Then, they will be able to watch the movies trailer and get information about them.",
-            category: 'fullstack'
+            category: 'fullstack',
           },
           {
             id: 'natours',
@@ -302,4 +302,77 @@ const data: Data = {
     ]
 };
 
+// Debug log to help with production issues
+console.log('Data loaded:', { 
+  socialMediaCount: data.socialMedia?.length, 
+  experienceCount: data.experience?.length, 
+  projectsCount: data.projects?.length 
+});
+
 export default data;
+
+// Safe data access utility
+export const getData = () => {
+  try {
+    // Validate data structure
+    if (!data || typeof data !== 'object') {
+      console.error('Data is not properly loaded');
+      return {
+        email: 'usmonhakimov1999@gmail.com',
+        socialMedia: [],
+        experience: [],
+        projects: []
+      };
+    }
+
+    // Validate required arrays
+    if (!Array.isArray(data.socialMedia)) {
+      console.error('socialMedia is not an array');
+      data.socialMedia = [];
+    }
+    
+    if (!Array.isArray(data.experience)) {
+      console.error('experience is not an array');
+      data.experience = [];
+    }
+    
+    if (!Array.isArray(data.projects)) {
+      console.error('projects is not an array');
+      data.projects = [];
+    }
+
+    // Validate experience items
+    if (data.experience.length > 0) {
+      data.experience.forEach((exp, index) => {
+        if (!exp.description || !exp.description.en || !exp.description.uz) {
+          console.error(`Experience item ${index} is missing description data:`, exp);
+        }
+      });
+    }
+
+    // Validate project items
+    if (data.projects.length > 0) {
+      data.projects.forEach((project, index) => {
+        if (!project.tech || !Array.isArray(project.tech)) {
+          console.error(`Project item ${index} is missing tech array:`, project);
+        }
+      });
+    }
+
+    console.log('Data validation passed:', { 
+      socialMediaCount: data.socialMedia?.length, 
+      experienceCount: data.experience?.length, 
+      projectsCount: data.projects?.length 
+    });
+
+    return data;
+  } catch (error) {
+    console.error('Error accessing data:', error);
+    return {
+      email: 'usmonhakimov1999@gmail.com',
+      socialMedia: [],
+      experience: [],
+      projects: []
+    };
+  }
+};

@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import data from '../data/data';
+import { getData } from '../data/data';
 import { useTranslation } from 'react-i18next';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState(10);
-  const [filteredProjects, setFilteredProjects] = useState(data.projects);
+  const data = getData();
+  const [filteredProjects, setFilteredProjects] = useState(data.projects || []);
   const { t } = useTranslation();
 
   // Animation variants
@@ -85,12 +86,25 @@ const Projects = () => {
 
   useEffect(() => {
     if (selectedCategory === 'all') {
-      setFilteredProjects(data.projects);
+      setFilteredProjects(data.projects || []);
     } else {
-      setFilteredProjects(data.projects.filter(project => project.category === selectedCategory));
+      setFilteredProjects((data.projects || []).filter(project => project.category === selectedCategory));
     }
     setVisibleCount(10); // Reset visible count when filtering
   }, [selectedCategory]);
+
+  // Safety check to prevent errors when data is not loaded
+  if (!data.projects || data.projects.length === 0) {
+    return (
+      <section id="projects" className="section-padding py-20 px-5 md:px-30 min-h-screen">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center">
+            <p style={{ color: 'var(--text-secondary)' }}>Loading projects data...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const categories = ['all', 'frontend', 'fullstack', 'backend', 'design', 'other'];
   const visibleProjects = filteredProjects.slice(0, visibleCount);
