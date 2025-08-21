@@ -21,19 +21,7 @@ const Experience = () => {
     );
   }
 
-  // Check if language is ready
-  if (!i18n.language || !['en', 'uz'].includes(i18n.language)) {
-    return (
-      <section id="experience" className="section-padding py-20 px-5 md:px-30 min-h-screen">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 mx-auto mb-4" style={{ borderColor: 'var(--accent-primary)' }}></div>
-            <p style={{ color: 'var(--text-secondary)' }}>Initializing language...</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -53,13 +41,7 @@ const Experience = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Effect to handle language changes
-  useEffect(() => {
-    // Force re-render when language changes
-    if (i18n.language) {
-      // This will trigger a re-render with the new language
-    }
-  }, [i18n.language]);
+
 
   // Additional safety check for currentJob
   if (!data.experience[activeJob]) {
@@ -67,8 +49,8 @@ const Experience = () => {
   }
 
   const currentJob = data.experience[activeJob] || data.experience[0];
-  // Ensure we have a valid language, default to 'en' if not set
-  const currentLanguage: 'en' | 'uz' = (i18n.language && ['en', 'uz'].includes(i18n.language)) ? (i18n.language as 'en' | 'uz') : 'en';
+  // Default to 'en', user can change it later
+  const currentLanguage: 'en' | 'uz' = i18n.language === 'uz' ? 'uz' : 'en';
 
   return (
     <section id="experience" className="section-padding py-20 px-5 md:px-30 min-h-screen">
