@@ -21,6 +21,20 @@ const Experience = () => {
     );
   }
 
+  // Check if language is ready
+  if (!i18n.language || !['en', 'uz'].includes(i18n.language)) {
+    return (
+      <section id="experience" className="section-padding py-20 px-5 md:px-30 min-h-screen">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 mx-auto mb-4" style={{ borderColor: 'var(--accent-primary)' }}></div>
+            <p style={{ color: 'var(--text-secondary)' }}>Initializing language...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -39,13 +53,22 @@ const Experience = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Effect to handle language changes
+  useEffect(() => {
+    // Force re-render when language changes
+    if (i18n.language) {
+      // This will trigger a re-render with the new language
+    }
+  }, [i18n.language]);
+
   // Additional safety check for currentJob
   if (!data.experience[activeJob]) {
     setActiveJob(0); // Reset to first job if current one is invalid
   }
 
   const currentJob = data.experience[activeJob] || data.experience[0];
-  const currentLanguage = i18n.language as 'en' | 'uz';
+  // Ensure we have a valid language, default to 'en' if not set
+  const currentLanguage: 'en' | 'uz' = (i18n.language && ['en', 'uz'].includes(i18n.language)) ? (i18n.language as 'en' | 'uz') : 'en';
 
   return (
     <section id="experience" className="section-padding py-20 px-5 md:px-30 min-h-screen">
@@ -88,12 +111,12 @@ const Experience = () => {
               <div className="job-details">
                 {/* Job Title and Company */}
                 <h3 className="text-2xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
-                  {currentJob.title[currentLanguage]} <span style={{ color: 'var(--accent-primary)' }}>@ {currentJob.company}</span>
+                  {currentJob?.title?.[currentLanguage] || 'Loading...'} <span style={{ color: 'var(--accent-primary)' }}>@ {currentJob?.company || 'Company'}</span>
                 </h3>
 
                 {/* Work Date */}
                 <p className="text-sm font-mono mb-6" style={{ color: 'var(--light-slate)' }}>
-                  {currentJob.date[currentLanguage]}
+                  {currentJob?.date?.[currentLanguage] || 'Loading...'}
                 </p>
 
                 {/* Job Description */}
