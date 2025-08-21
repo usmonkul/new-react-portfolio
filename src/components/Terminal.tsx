@@ -22,7 +22,7 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
     'projects': 'Featured projects:\n- Marico: Creator-audience platform\n- Movie App: Full-stack streaming app\n- Natours: Tour agency website\n- MediMatrix: Medical platform design',
     'ls': 'portfolio/\n  ├── src/\n  ├── public/\n  ├── package.json\n  ├── README.md\n  └── .gitignore',
     'pwd': currentDirectory,
-    'whoami': 'usmonkhakimov',
+    'whoami': 'usmonkhakim',
     'contact': 'Email: usmonhakimov1999@gmail.com\nGitHub: github.com/Usmonkul\nLinkedIn: linkedin.com/in/usmonkul-khakimov',
     'clear': 'clear'
   };
@@ -103,7 +103,7 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
       >
         <motion.div
           ref={terminalRef}
-          className="w-full max-w-4xl h-96 bg-gray-900 rounded-lg shadow-2xl overflow-hidden"
+          className="w-full max-w-4xl min-h-96 bg-gray-900 rounded-lg shadow-2xl overflow-hidden"
           initial={{ scale: 0.8, y: 50 }}
           animate={{ scale: 1, y: 0 }}
           exit={{ scale: 0.8, y: 50 }}
@@ -112,8 +112,8 @@ const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
           {/* Terminal Header */}
           <div className="bg-gray-800 px-4 py-2 flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div onClick={onClose} className="w-3 h-3 bg-red-500 rounded-full cursor-pointer"></div>
+              <div onClick={onClose} className="w-3 h-3 bg-yellow-500 rounded-full cursor-pointer"></div>
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
             </div>
             <div className="text-gray-400 text-sm font-mono">

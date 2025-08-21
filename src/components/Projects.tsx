@@ -205,17 +205,27 @@ const Projects = () => {
                 }}
               >
                 {/* Card Header */}
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex justify-between items-center mb-4">
                   <motion.div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center"
                     style={{ color: 'var(--accent-primary)' }}
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5a2 2 0 012-2h4a2 2 0 012 2v2H8V5z" />
-                    </svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        role="img"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="feather feather-folder w-8 h-8">
+                        <title>Folder</title>
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                      </svg>
+
                   </motion.div>
                   <div className="flex space-x-3">
                     <motion.a
@@ -248,7 +258,14 @@ const Projects = () => {
                 </div>
 
                 {/* Project Title */}
-                <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--text-primary)' }}>
+                <h3 
+                  className="text-xl font-bold mb-3 transition-colors duration-300"
+                  style={{ 
+                    color: 'var(--text-primary)'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-primary)'}
+                >
                   {project.title}
                 </h3>
 

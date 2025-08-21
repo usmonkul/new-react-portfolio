@@ -204,35 +204,37 @@ const AboutMe = () => {
                 </motion.div>
               ))}
             </motion.div>
+
+              {/* Terminal Button */}
+              <motion.div 
+                className="mt-12 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+              >
+                <motion.button
+                  onClick={() => setIsTerminalOpen(true)}
+                  className="px-6 py-3 rounded-lg font-mono text-sm border-2 transition-all duration-300"
+                  style={{
+                    backgroundColor: 'transparent',
+                    color: 'var(--accent-primary)',
+                    borderColor: 'var(--accent-primary)'
+                  }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    backgroundColor: 'var(--green-tint)',
+                    boxShadow: '0 5px 15px rgba(100, 255, 218, 0.3)'
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="mr-2">⚡</span>
+                  Open Terminal
+                </motion.button>
+              </motion.div>
           </motion.div>
         </div>
 
-        {/* Terminal Button */}
-        <motion.div 
-          className="mt-12 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 1.0 }}
-        >
-          <motion.button
-            onClick={() => setIsTerminalOpen(true)}
-            className="px-6 py-3 rounded-lg font-mono text-sm border-2 transition-all duration-300"
-            style={{
-              backgroundColor: 'transparent',
-              color: 'var(--accent-primary)',
-              borderColor: 'var(--accent-primary)'
-            }}
-            whileHover={{ 
-              scale: 1.05,
-              backgroundColor: 'var(--green-tint)',
-              boxShadow: '0 5px 15px rgba(100, 255, 218, 0.3)'
-            }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="mr-2">⚡</span>
-            Open Terminal
-          </motion.button>
-        </motion.div>
+        
 
         {/* Additional Info */}
         <motion.div 
