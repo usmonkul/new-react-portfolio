@@ -12,6 +12,7 @@ import SpotlightEffect from './components/SpotlightEffect'
 import './components/SpotlightEffect.css'
 import ErrorBoundary from './components/ErrorBoundary'
 import { useTranslation } from 'react-i18next'
+import { Analytics } from "@vercel/analytics/react"
 
 function AppContent() {
   const { ready } = useTranslation();
@@ -55,6 +56,7 @@ function App() {
       <div className="App">
         <ErrorBoundary>
           <AppContent />
+          <Analytics />
         </ErrorBoundary>
       </div>
     </ThemeProvider>
